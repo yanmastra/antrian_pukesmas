@@ -7,3 +7,6 @@ Tugas kuliah
 2. Aktifkan webserver (Apache atau yang lainya)
 3. Taruh semua file yang di clone di folder www atau htdocs
 4. Buka dari broser melalui http://localhost/antrian_puskesmas/
+
+# Info 
+halaman web ini saya buat dengan template dari https://startbootstrap.com/ 
