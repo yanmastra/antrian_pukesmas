@@ -1,4 +1,4 @@
-# antrian_pukesmas
+# antrian_puskesmas
 Tugas kuliah
 
 # Cara membuka 
