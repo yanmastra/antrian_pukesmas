@@ -4,7 +4,12 @@ $db = getConnection();
 if(isLoged()){
 	if(isset($_POST['keluhan']) && !isHaveBook()){
 		$ps = $db->prepare("SELECT * FROM dt_pasien WHERE username = ?");
-		$ps->execute(array($_COOKIE['username']));
+		if(isset($_POST['username'])){
+			$exc = $_POST['username'];
+		}else{
+			$exc = $_COOKIE['username'];
+		}
+		$ps->execute(array($exc));
 		$pasien = $ps->fetch(PDO::FETCH_OBJ);
 
 		$_id = date("Ymd");

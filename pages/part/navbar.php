@@ -108,7 +108,7 @@
                             <a href='?page=riwayat'><i class='fa fa-history fa-fw'></i> Lihat Riwayat Antrian</a>
                         </li>
                         <li>
-                            <a href='?page=daftarkanantri'><i class='fa fa-plus fa-fw'></i> Tambahkan Antrian</a>
+                            <a href='#' data-toggle='modal' data-target='#modal-add-antrian'><i class='fa fa-plus fa-fw'></i> Tambahkan Antrian</a>
                         </li>";
                         }else{
                             echo "

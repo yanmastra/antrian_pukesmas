@@ -1,30 +1,28 @@
 <div class='row'>
 	<div class='col-lg-12'>
 		<div class='page-header'>
-			<h3>Catatan Antrian Pasien</h3>
+			<h5>Catatan Antrian Pasien</h5>
 		</div>
 	</div>
 </div>
 <div class='row'>
 	<div class='col-lg-12'>
-		<div class='panel panel-primary'>
-			<div class='panel-heading'>
-				<h4>Riwayat</h4>
-			</div>
-			<div class='panel-body table-responsive'>
+		<div class='panel panel-default'>
+			<div class='panel-body table-responsive' style='overflow: auto;'>
 				<table id='table-antrian' class='table table-striped table-bordered table-hover'>
 					<thead>
 						<tr>
 							<th rowspan='2'>No</th>
-							<th rowspan='2'>Username</th>
-							<th rowspan='2'>Nama Lengkap</th>
-							<th rowspan='2'>Nomor Antrian</th>
-							<th rowspan='2'>Keluhan</th>
-							<th rowspan='2'>Tanggal Keluar</th>
-							<th rowspan='2'>Alamat</th>
-							<td colspan='2' class='text-center'>Yang Menangani</td>
+							<th colspan='6' class='text-center'>Identitas Pasien</th>
+							<th colspan='2' class='text-center'>Yang Menangani</th>
 						</tr>
 						<tr>
+							<th>Username</th>
+							<th>Nama Lengkap</th>
+							<th>Nomor Antrian</th>
+							<th>Keluhan</th>
+							<th>Tanggal Keluar</th>
+							<th>Alamat</th>
 							<th>Nama Pegawai</th>
 							<th>Username </th>
 						</tr>
@@ -65,8 +63,6 @@
 						</tr>
 					</tbody>
 				</table>
-			</div>
-			<div class='panel-footer'>
 			</div>
 		</div>
 	</div>

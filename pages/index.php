@@ -34,11 +34,10 @@ $subAplikasi = "Puskesmas Kuta Selatan";
                         break;
                     case 'riwayat' : require 'riwayat.php';
                         break;
-                    case 'daftarkanantri' : require 'add_antri.php';
-                        break;
                     default : require 'home.php';
-                    break;
+                        break;
                 }
+                require 'add_antri.php';
        		}else{
                 include "login.php";
         	}
