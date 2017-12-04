@@ -25,11 +25,20 @@ $subAplikasi = "Puskesmas Kuta Selatan";
 
         <div id="page-wrapper">
         	<!-- page content -->
-        	
         <?php 
         // include for content
         	if(isLoged()){
-       			include 'home.php';
+                switch(@$_GET['page']){
+                    case 'tanganiantri' : 
+                        require 'tangani_antri.php';
+                        break;
+                    case 'riwayat' : require 'riwayat.php';
+                        break;
+                    case 'daftarkanantri' : require 'add_antri.php';
+                        break;
+                    default : require 'home.php';
+                    break;
+                }
        		}else{
                 include "login.php";
         	}

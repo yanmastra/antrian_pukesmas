@@ -39,25 +39,21 @@
                             </a>
                             </div>
                         </li>
-                        <li class='divider'></li>";
+                        <li class='divider'></li>
+                    </ul>";
                         }
                     }else{
                         echo "
                     <ul class='dropdown-menu' style='width: 250px;'>
                         <li>
                             <a class='text-center' href='#'>
-                                <strong><em>Tidak ada<em></strong>
+                                <strong><em>Tidak ada</em></strong>
                             </a>
                         </li>
                     </ul>";
                     }
-                    echo "
-                    </ul>
-                    <!-- /.dropdown-messages -->";
-                }else{
-                    echo "";
-                }
-                ?>
+                }?>
+
                 </li>
                 <!-- /.dropdown -->
             </ul>
