@@ -102,13 +102,13 @@
                             <a href='../pages/'><i class='fa fa-dashboard fa-fw'></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href='antrian.php'><i class='fa fa-users fa-fw'></i> Tangani Antrian</a>
+                            <a href='?page=tanganiantri'><i class='fa fa-users fa-fw'></i> Tangani Antrian</a>
                         </li>
                         <li>
-                            <a href='lihat_antrian.php'><i class='fa fa-history fa-fw'></i> Lihat Riwayat Antrian</a>
+                            <a href='?page=riwayat'><i class='fa fa-history fa-fw'></i> Lihat Riwayat Antrian</a>
                         </li>
                         <li>
-                            <a href='tambah_antrian.php'><i class='fa fa-plus fa-fw'></i> Tambahkan Antrian</a>
+                            <a href='?page=daftarkanantri'><i class='fa fa-plus fa-fw'></i> Tambahkan Antrian</a>
                         </li>";
                         }else{
                             echo "

@@ -1,17 +1,17 @@
-<div class="row">
-	<div class="col-lg-12">
+<div class='row'>
+	<div class='col-lg-12'>
 		<div class='page-header'>
 			<h3>Tangani Antrian</h3>
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-green">
+<div class='row'>
+	<div class='col-lg-12'>
+		<div class='panel panel-green'>
 			<div class='panel-heading'>
 				<h4>Antrian</h4>
 			</div>
-			<div class="panel-body" style="overflow: auto;">
+			<div class='panel-body' style='overflow: auto;'>
 				<table class='table table-striped table-bordered table-hover table-resposive' id='table-antrian'>
 					<thead>
 						<th>No</th>
