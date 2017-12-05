@@ -20,35 +20,48 @@
 						<th>Tangani</th>
 					</thead>
 					<tbody>
-						<tr class='success'>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+						<?php 
+							$db = getConnection();
+							$ss = $db->query("SELECT * FROM antrian_aktif WHERE 1 LIMIT 0,10");
+							$i = 1;
+							while($res = $ss->fetch(PDO::FETCH_ASSOC)){
+								if($i==1){
+									echo "
+							<tr class='success'>
+							<td>$i</td>
+							<td>".$res['Username']."</td>
+							<td>".$res['Nomor Antrian']."</td>
+							<td>".$res['NIK']."</td>
+							<td>".$res['Keluhan']."</td>
+							<td>".$res['Tanggal Masuk']."</td>
 							<td>
-								<a href='#' class='btn btn-primary btn-sm'>
+								<a href='../process/tangani.php?id=".$res['Nomor Antrian']."&status=tangani' class='btn btn-primary btn-sm'>
 									Tertangani
 								</a>
-								<a href='#' class='btn btn-danger btn-sm'>
+								<a href='../process/tangani.php?id=".$res['Nomor Antrian']."&status=belum_datang' class='btn btn-danger btn-sm'>
 									Belum Datang
 								</a>
 							</td>
-						</tr>
+						</tr>";
+								}else{
+									echo "
 						<tr class='warning'>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>$i</td>
+							<td>".$res['Username']."</td>
+							<td>".$res['Nomor Antrian']."</td>
+							<td>".$res['NIK']."</td>
+							<td>".$res['Keluhan']."</td>
+							<td>".$res['Tanggal Masuk']."</td>
 							<td>
-								<a href='#' class='btn btn-warning btn-outline btn-xs'>
+								<a href='../process/tangani.php?id=".$res['Nomor Antrian']."&status=tangani_sekarang' class='btn btn-warning btn-outline btn-xs'>
 									Tangani Sekarang
 								</a>
 							</td>
-						</tr>
+						</tr>";
+								}
+								$i++;
+							}
+?>						
 					</tbody>
 				</table>
 			</div>

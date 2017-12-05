@@ -16,11 +16,11 @@ if(!isset($_page_key)){
 <?php 
 if(isHaveBook()){
   $db = getConnection();
-  $ss = $db->prepare("SELECT * FROM antrian_aktif WHERE `Username` = ?");
+  $ss = $db->prepare("SELECT * FROM antrian_aktif WHERE `Username` = ? AND `Nomor Antrian` LIKE '".date('Ymd')."%'");
   $ss->execute(array($_COOKIE['username']));
   $res = $ss->fetch(PDO::FETCH_ASSOC);
 
-  $sisa = $db->query("SELECT * FROM antrian_aktif WHERE `Tanggal Masuk` < '".$res['Tanggal Masuk']."'");
+  $sisa = $db->query("SELECT * FROM antrian_aktif WHERE `Tanggal Masuk` < '".$res['Tanggal Masuk']."' AND `Nomor Antrian` LIKE '".date('Ymd')."%'");
   echo "
         <div class='col-lg-12'>
           <h3 class='text-center'>INFO ANTRIAN</h3>
