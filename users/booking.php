@@ -16,11 +16,30 @@ if(!isset($_page_key)){
 <?php 
 if(isHaveBook()){
   $db = getConnection();
-  $ss = $db->prepare("SELECT * FROM antrian_aktif WHERE `Username` = ? AND `Nomor Antrian` LIKE '".date('Ymd')."%'");
+  $ss = $db->prepare("SELECT * FROM antrian_aktif WHERE `Username` = ?");
   $ss->execute(array($_COOKIE['username']));
   $res = $ss->fetch(PDO::FETCH_ASSOC);
 
-  $sisa = $db->query("SELECT * FROM antrian_aktif WHERE `Tanggal Masuk` < '".$res['Tanggal Masuk']."' AND `Nomor Antrian` LIKE '".date('Ymd')."%'");
+  $sisa = $db->query("SELECT * FROM antrian_aktif WHERE `Tanggal Masuk` < '".$res['Tanggal Masuk']."' AND `Nomor Antrian` LIKE '".date('Ymd')."%' AND Status = 'ngantre'");
+  if($res['Status']=='tidak datang'){
+    $info = "
+          <h3 class='text-center'>Nomor antrian anda sudah lewat</h3>
+          <h6 class='text-center'>Silahkan segera datang ke puskesmas dan melapor</h6>
+          <span class='text-center'>Nomor antrian anda akan kembali dipanggil setelah lima antrian di depan anda keluar</span>";
+  }else{
+    if($sisa->rowCount()==0){
+      $info = "
+          <h1 class='text-center'>Sekarang Giliran Anda</h1>
+          <h6 class='text-center'>Segera datang ke puskesmas sekarang!</h6>
+          <span class='text-center'>Jika anda terlambat, maka nomor antrian anda akan dilewatkan!</span>";
+    }else {
+      $info = "
+          <h1 class='text-center'>".$sisa->rowCount()."<br>ORANG</h1>
+          <h6 class='text-center'>Masih mengantri didepan anda</h6>
+          <span class='text-center'>Silahkan datang ke puskesmas sebelum nomor antrian anda lewat</span>";
+    }
+  }
+
   echo "
         <div class='col-lg-12'>
           <h3 class='text-center'>INFO ANTRIAN</h3>
@@ -68,10 +87,7 @@ if(isHaveBook()){
       </div>
       <div class='col-md-6'>
         <div class='container'>
-          <h1 class='text-center'>".$sisa->rowCount()."</h1>
-          <h6 class='text-center'>orang <br>masih mengantri di depan anda</h6>
-          <br>
-          <span class='text-center'>Silahkan datang ke puskesmas sebelum nomor antrian anda lewat</span>
+          ".$info."
         </div>
       </div>";
 }else{

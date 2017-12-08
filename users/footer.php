@@ -75,3 +75,11 @@
 
     <!-- Custom scripts for this template -->
     <script src="../js/freelancer.min.js"></script>
+<script src='../vendor/jquery/jquery.datetimepicker.full.min.js'></script>
+<script>
+$('#tanggal_lahir').datetimepicker({
+  timepicker:false,
+  format:'Y-m-d',
+  maxDate: new Date().toLocaleDateString() 
+});
+</script>

@@ -6,11 +6,24 @@ if(!isset($_page_key)){
 ?>
 <div class="row">
 	<div class="col-lg-12">
-		<div class="page-header">
-			<img src="../data/icon-1.png" style="width: 100px; display: inline-block; padding: 8px">
-			<span style="display: inline-block; vertical-align: bottom;">
-				<h1><?php echo $subAplikasi; ?></h1>
-			</span>
+		<div class="page-header row">
+			<div class='col-md-8'>
+				<img src="../data/icon-1.png" style="width: 100px; display: inline-block; padding: 8px">
+				<span style="display: inline-block; vertical-align: bottom;">
+					<h1><?php echo $subAplikasi; ?></h1>
+				</span>
+			</div>
+			<div class='col-md-4'>
+				<?php 
+				if(isset($_GET['warning'])){
+					echo "
+	            <div class='alert alert-warning alert-dismissable'>
+	            	<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+	            	".$_GET['warning']."
+	            </div>";
+				}
+				?>
+	        </div>
 		</div>
 	</div>
 </div>
@@ -36,6 +49,9 @@ if(!isset($_page_key)){
 							while($res = $ss->fetch(PDO::FETCH_ASSOC)){
 								echo "
 								<li>".$res['Nama Lengkap'].", ".$res['Keluhan']."</li>";
+							}
+							if($ss->rowCount()==0){
+								echo "<em>Belum ada pasien yang ingin berobat</em>";
 							}
 						}
 					?>
@@ -68,13 +84,15 @@ if(!isset($_page_key)){
 			<div class="panel-body">
 				<ol>
 				<?php 
-				for($i=0; $i<7; $i++){
-					echo "<li> Story pasien $i </li>";
+				$db = getConnection();
+				$ss = $db->query("SELECT * FROM riwayat_antrian WHERE `Tanggal Keluar` LIKE '%".date("Y-m-d")."%' LIMIT 7");
+				while($res = $ss->fetch(PDO::FETCH_ASSOC)){
+					echo "<li> ".$res['Keluhan']." </li>";
 				}
 				?>
 				</ol>
 			</div>
-			<a href="antrian.php">
+			<a href="?page=riwayat">
 				<div class="panel-footer">
 					<span class="pull-left"> 7 lebih pasien baru </span>
 					<span class="pull-right">
@@ -85,5 +103,4 @@ if(!isset($_page_key)){
 			</a>
 		</div>
 	</div>
-	
 </div>

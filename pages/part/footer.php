@@ -20,10 +20,10 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#table-antrian').dataTable({
+            $('#table-riwayat').dataTable({
             "language" : {
             "lengthMenu" : "Tampilkan _MENU_ per halaman",
-            "search" : "Cari " ,
+            "search" : "Cari : ",
             "zeroRecords" : "Hasil tidak ditemukan",
             "info" : "Halaman _PAGE_ dari _PAGES_ halaman <br/>",
             "infoEmpty" : "Data tabel kosong", 

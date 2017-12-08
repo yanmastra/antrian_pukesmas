@@ -98,7 +98,7 @@ if(isLoged()){
                 <div class='modal-body'>
                   <h2>DAFTAR</h2>
                   <hr class='star-primary'>
-                  <img class='img-fluid img-centered' src='img/daftar.png' alt='' height='100' width='300'>
+                  <img class='img-fluid img-centered' src='img/daftar.png' alt='' height='100' width='300'/>
                   <p >Untuk Melakukan Pendaftaran Ikuti Langkah Berikut :
                     <ol class='text-left'>
                       <li>Pilih Menu Daftar</li>

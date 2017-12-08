@@ -82,22 +82,39 @@ function getLoginType(){
 	}
 }
 
-function getIdNumber($number){
+function getIdNumber($number, $index = null){
 	$db = getConnection();
 	if($number != null){
 		$nol = array(0 => '', 1 => '0', 2 => '00', 3 => '000', 4 => '0000');
-		$ss = $db->query("SELECT * FROM dt_antrian WHERE id_antrian LIKE '%$number%'");
-		//$ss->execute(array($number));
-		$nm = $ss->rowCount();
-		$long = strlen(strval($nm));
-		return $number.$nol[4-$long].($nm+1);
+		if($index == 'x'){
+			$len = strlen($number);
+			$val = substr($number, $len-2);
+			$val = intval($val)+1;
+			$hasil = substr($number, 0, $len-2).$nol[(2-strlen(strval($val)))].$val;
+		}else {
+			$ss = $db->query("SELECT * FROM dt_antrian WHERE id_antrian LIKE '%$number%'");
+			//$ss->execute(array($number));
+			$nm = $ss->rowCount();
+			$long = strlen(strval($nm));
+			if($index==null){
+				$hasil = $number.$nol[4-$long].($nm+1);
+			}else {
+				$hasil = $number.$nol[$index-$long].($nm+1);
+			}
+		}
+		$ss = $db->query("SELECT * FROM dt_antrian WHERE id_antrian = '$hasil'");
+		if($ss->rowCount()>0){
+			return getIdNumber($hasil,'x');
+		}else{
+			return $hasil;
+		}
 	}
 }
 
 function isHaveBook(){
 	if(isLoged()){
 		$db = getConnection();
-		$ss = $db->prepare("SELECT * FROM antrian_aktif WHERE Username = ? AND `Tanggal Masuk` LIKE '%".date('Y-m-d')."%'");
+		$ss = $db->prepare("SELECT * FROM antrian_aktif WHERE Username = ?");
 		$ss->execute(array($_COOKIE['username']));
 		if($ss->rowCount()>0){
 			return true;

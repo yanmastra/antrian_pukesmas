@@ -17,7 +17,7 @@ if (!isLoged()) {
 		if (!isPasienAvailable("nik", $nik)) {	
 			if($password == $password_2){
 				$db = getConnection();
-				$result = $db->query("INSERT INTO user VALUES('".$_POST['username']."', '".$_POST['password']."', 'pasien')");
+				$result = $db->query("INSERT INTO user VALUES('".$username."', '".$_POST['password']."', 'pasien')");
 				if($result){
 					$result2 = $db->query("INSERT INTO dt_pasien VALUES (
 						'".$username."',
@@ -31,6 +31,7 @@ if (!isLoged()) {
 					if ($result2) {
 						location(currentPath()."?login=Data anda berhasil direkam!#masuk");
 					}else{
+						$db->query("DELETE FROM user WHERE username = '".$username."'");
 						location(currentPath()."?daftar=Ada kesalahan pada data yang anda input!#daftar");
 					}
 				}else{

@@ -19,29 +19,31 @@
                 <?php 
                 if(isLoged()){
                     $db = getConnection();
-                    $ss = $db->query("SELECT * FROM antrian_tidak_datang WHERE tanggal_masuk LIKE '%".date('Y-m-d')."%'");
+                    $ss = $db->query("SELECT * FROM antrian_aktif WHERE Status = 'tidak datang' AND 'Tanggal Masuk' >= '".date('Y-m-d')."'");
                     if($ss->rowCount()>0){
                         echo "
                     <ul class='dropdown-menu' style='width: 250px; max-height:400px; overflow: auto'>";
-                        while ($res = $ss->fetch(PDO::FETCH_OBJ)) {
+                        while ($res = $ss->fetch(PDO::FETCH_ASSOC)) {
                             echo "
                         <li>
                             <div style='margin:0 12px'>
                             <div>
-                                <strong>".$res->nama_lengkap."</strong>
+                                <strong>".$res['Nama Lengkap']."</strong>
                                 <span class='pull-right text-muted'>
-                                    <em>".substr(strval($res->tanggal_masuk),11)."</em>
+                                    <em>".substr(strval($res['Tanggal Masuk']),11)."</em>
                                 </span>
                             </div>
-                            <div>".$res->keluhan."</div>
-                            <a href='?id_antrian=".$res->id_antrian."' class='text-center'>
-                                <span class='pull-right link'>Sudah datang?</strong>
+                            
+                            <div>".$res['Keluhan']."</div>
+                            <a href='../process/tangani.php?id=".$res['Nomor Antrian']."&status=sudah_datang' class='text-center'>
+                                <span class='pull-right link'>Sudah datang?</span>
                             </a>
                             </div>
                         </li>
-                        <li class='divider'></li>
-                    </ul>";
+                        <li class='divider'></li>";
                         }
+                        echo 
+                    "</ul>";
                     }else{
                         echo "
                     <ul class='dropdown-menu' style='width: 250px;'>
@@ -80,12 +82,17 @@
                             <!-- /input-group -->
                         <?php 
                         if(isLoged()){
+                            $getUser= getConnection();
+                            $ss = $getUser->query("SELECT * FROM dt_pegawai WHERE username = '".$_COOKIE['username']."'");
+                            $resUser = $ss->fetch(PDO::FETCH_OBJ);
+                            $ss = null;
+                            $getUser = null;
                             echo "
                         <li class='sidebar-search'>
                             <div class='text-center'>
                                 <span class='fa fa-user fa-3x'> </span>
                                 <br>
-                                <h4>".$_COOKIE['username']."</h4>
+                                <h4>".$resUser->nama_lengkap."</h4>
                                 <div class='input-group text-center' style='width: 100%'>
                                     <a href='#' class='btn btn-outline btn-primary btn-xs' type='button'>
                                         <i class='fa fa-gear fa-fw'> </i>

@@ -3,12 +3,13 @@
 		<center>
 			<?php
 			if(isset($_GET['login'])){
-				echo "<h3>".$_GET['login']."</h3>";
+				echo "<h3>".$_GET['login']."</h3>
+			<p> Silahkan lakukan login sekali lagi</p>";
 			}else{
-				echo "<h3> Anda belum melakukan login </h3>";
+				echo "<h3> Anda belum melakukan login </h3>
+			<p> Silahkan lakukan login </p>";
 			}
 			?>
-			<p> Silahkan lakukan login </p>
 			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-login">
 				<i class="fa fa-sign-in fa-fw"> </i>
 				Login

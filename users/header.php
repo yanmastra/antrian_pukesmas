@@ -23,6 +23,7 @@
     <!--link href="../vendor/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet"-->
 
     <!--link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet"-->
+<link rel="stylesheet" type="text/css" href="../vendor/jquery/jquery.datetimepicker.css">
 
     
     <title>Puskesmas Kuta Selatan</title>
