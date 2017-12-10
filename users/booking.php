@@ -16,7 +16,7 @@ if(!isset($_page_key)){
 <?php 
 if(isHaveBook()){
   $db = getConnection();
-  $ss = $db->prepare("SELECT * FROM antrian_aktif WHERE `Username` = ?");
+  $ss = $db->prepare("SELECT * FROM antrian_aktif WHERE `Username` = ? ");
   $ss->execute(array($_COOKIE['username']));
   $res = $ss->fetch(PDO::FETCH_ASSOC);
 

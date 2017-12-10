@@ -46,6 +46,11 @@
                     <i class="fa fa-fw fa-twitter"></i>
                   </a>
                 </li>
+                <li class="list-inline-item">
+                  <a class="btn-social btn-outline" href="https://github.com/yanmastra/" target="_blank">
+                    <i class="fa fa-sm fa-github"></i>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

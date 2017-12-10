@@ -58,6 +58,9 @@ if(isset($_GET['warning']) && isset($_GET['message'])){
 							<td>".$res['Keluhan']."</td>
 							<td>".$res['Tanggal Masuk']."</td>
 							<td width='180'>
+								<a href='#' onclick='setReject()' class='btn btn-danger btn-sm'>
+									<i class='fa fa-times fa-fw'></i>
+								</a>
 								<a href='../process/tangani.php?id=".$res['Nomor Antrian']."&peg_id=".$resUser->no_pegawai."&status=tangani' class='btn btn-primary btn-sm'>
 									<i class='fa fa-check fa-fw'></i>
 								</a>
@@ -75,6 +78,9 @@ if(isset($_GET['warning']) && isset($_GET['message'])){
 							<td>".$res['Keluhan']."</td>
 							<td>".$res['Tanggal Masuk']."</td>
 							<td>
+								<a href='#' onclick='setReject()' class='btn btn-danger btn-sm'>
+									<i class='fa fa-times fa-fw'></i>
+								</a>
 								<a href='../process/tangani.php?id=".$res['Nomor Antrian']."&peg_id=".$resUser->no_pegawai."&status=tangani' class='btn btn-primary btn-outline btn-xs'>
 									Tangani sekarang ?
 								</a>
@@ -101,15 +107,22 @@ if(isset($_GET['warning']) && isset($_GET['message'])){
 				for(var i in myObj){
 					var n = i+1;
 					if(n==1){
-						document.getElementById('tb_antrian').innerHTML += "<tr class='success'><td>"+myObj[i].username+"</td><td>"+myObj[i].no_antrian+"</td><td>"+myObj[i].nik+"</td><td>"+myObj[i].keluhan+"</td><td>"+myObj[i].tgl_masuk+"</td><td width='180'><a href='../process/tangani.php?id="+myObj[i].no_antrian+"&peg_id="+<?php echo "'".$resUser->no_pegawai."'";?>+"&status=tangani' class='btn btn-primary btn-sm'><i class='fa fa-check fa-fw'> </i></a> <a href='../process/tangani.php?id="+myObj[i].no_antrian+"&status=belum_datang' class='btn btn-danger btn-sm'>Belum Datang ?</a></td></tr>";
+						document.getElementById('tb_antrian').innerHTML += "<tr class='success'><td>"+myObj[i].username+"</td><td>"+myObj[i].no_antrian+"</td><td>"+myObj[i].nik+"</td><td>"+myObj[i].keluhan+"</td><td>"+myObj[i].tgl_masuk+"</td><td width='180'> <a href='#' onclick='setReject("+myObj[i].no_antrian+","+<?php echo "'".$resUser->no_pegawai."'";?>+")' class='btn btn-danger btn-sm'><i class='fa fa-times fa-fw'></i></a> <a href='../process/tangani.php?id="+myObj[i].no_antrian+"&peg_id="+<?php echo "'".$resUser->no_pegawai."'";?>+"&status=tangani' class='btn btn-primary btn-sm'><i class='fa fa-check fa-fw'> </i></a> <a href='../process/tangani.php?id="+myObj[i].no_antrian+"&status=belum_datang' class='btn btn-warning btn-sm'><i class='fa fa-exclamation fa-fw'></i></a></td></tr>";
 					}else{
-						document.getElementById('tb_antrian').innerHTML += "<tr class='warning'><td>"+myObj[i].username+"</td><td>"+myObj[i].no_antrian+"</td><td>"+myObj[i].nik+"</td><td>"+myObj[i].keluhan+"</td><td>"+myObj[i].tgl_masuk+"</td><td width='180'><a href='../process/tangani.php?id="+myObj[i].no_antrian+"&peg_id="+<?php echo "'".$resUser->no_pegawai."'";?>+"&status=tangani' class='btn btn-primary btn-outline btn-xs'>Tangani sekarang ?</a></td></tr>";
+						document.getElementById('tb_antrian').innerHTML += "<tr class='warning'><td>"+myObj[i].username+"</td><td>"+myObj[i].no_antrian+"</td><td>"+myObj[i].nik+"</td><td>"+myObj[i].keluhan+"</td><td>"+myObj[i].tgl_masuk+"</td><td width='180'> <a href='#' onclick='setReject("+myObj[i].no_antrian+","+<?php echo "'".$resUser->no_pegawai."'";?>+")' class='btn btn-danger btn-xs'> <i class='fa fa-times fa-fw'> </i> </a> <a href='../process/tangani.php?id="+myObj[i].no_antrian+"&peg_id="+<?php echo "'".$resUser->no_pegawai."'";?>+"&status=tangani' class='btn btn-primary btn-outline btn-xs'>Tangani sekarang ?</a></td></tr>";
 					}
 				}
 			}
 		};
 		xmlhttp.open("GET", "../process/json-provider.php?req=antrian_aktif", true);
 		xmlhttp.send();
+	}
+
+	function setReject(id,peg_id){
+		var rjx = confirm("Apakah anda yakin untuk menolak antrian ini ?");
+		if(rjx == true){
+			window.location = '../process/tangani.php?id='+id+'&status=reject&peg_id='+peg_id;
+		}
 	}
 
 	function displayTime(a){

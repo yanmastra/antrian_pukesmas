@@ -5,8 +5,6 @@
     <meta name="author" content="Kangguru Team">
     <meta name="keywords" content="Antrian, Puskesmas Kuta Selatan, Booking Antrian, Berobat">
 
-    <meta http-equiv="refresh" content="120">
-
     <!-- Bootstrap core CSS -->
     <link href="../vendor/users-bootstrap/bootstrap.min.css" rel="stylesheet">
 

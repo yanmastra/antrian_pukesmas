@@ -56,6 +56,14 @@ if(isLoged()){
 					location(currentPath()."?page=tanganiantri&warning=Failed&message=Ada kesalahan dalam menangani antrian.".getIdNumber($res['Nomor Antrian']));
 				}
 				break;
+			case 'reject' :
+				$ss->execute(array('ditolak', null, $_GET['peg_id'], $_GET['id']));
+				if($ss->rowCount()>0){
+					location(currentPath()."?page=tanganiantri&warning=Success&message=Antrian dengan <b>Nomor : ".$_GET['id']." ditolak </b> ");
+				} else{
+					location(currentPath()."?page=tanganiantri&warning=Failed&message=Ada kesalahan dalam menolak antrian!");
+				}
+				break;
 			default : 
 				location(currentPath());
 				break;
