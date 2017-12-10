@@ -5,6 +5,7 @@
     include '../process/connection.php';
     if(getLoginType() != 'pasien' && isLoged()){
         location(currentPath());
+        //echo currentPath();
     }
     include 'header.php'; ?>
 	<title></title>

@@ -19,7 +19,9 @@
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="../vendor/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<!--link href="../vendor/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet"-->
+<link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+<link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="../data/icon-1.png"/>
 

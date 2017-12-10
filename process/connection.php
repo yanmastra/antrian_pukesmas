@@ -35,14 +35,19 @@ function isPasienAvailable($field, $value){
 	}
 }
 
-function location($switch){
+function location($switch, $port=null){
 	if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
 		$uri = 'https://';
 	} else {
 		$uri = 'http://';
 	}
-	$uri .= $_SERVER['HTTP_HOST'].'/antrianpuskesmas/';
+	$host = $_SERVER['HTTP_HOST'];
+	if(substr($host, strlen($host)-4) == '8080'){
+		$port = '';
+	}
+	$uri .= $host.$port.'/';
 	header('Location: '.$uri.$switch);
+	//echo $uri.$switch;
 }
 
 function currentPath($args = false){

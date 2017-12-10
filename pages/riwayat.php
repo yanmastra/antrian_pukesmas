@@ -5,15 +5,14 @@
 			<div class='panel-heading'>
 				<h5>Data Riwayat Pasien</h5>
 			</div>
-			<div class='panel-body' style='overflow: auto;'>
-				<table id='table-riwayat' class='table table-striped table-bordered table-hover table-responsive'>
+			<div class='panel-body' style="overflow: auto;">
+				<table id='table-riwayat' class='table table-striped table-bordered table-hover table-responsive' style='width:100%'>
 					<thead>
 						<tr>
-							<th rowspan='2'>No</th>
 							<th colspan='6' class='text-center success'>Identitas Pasien</th>
 							<th colspan='2' class='text-center warning'>Yang Menangani</th>
 						</tr>
-						<tr>
+						<tr class='btn-primary'>
 							<th>Username</th>
 							<th>Nama Lengkap</th>
 							<th>Nomor Antrian</th>
@@ -32,7 +31,6 @@
 						while($res = $ss->fetch(PDO::FETCH_ASSOC)){
 							echo "
 						<tr>
-							<td>$i</td>
 							<td class='success'>".$res['Username Pasien']."</td>
 							<td class='success'>".$res['Nama Lengkap']."</td>
 							<td class='success'>".$res['Nomor Antrian']."</td>

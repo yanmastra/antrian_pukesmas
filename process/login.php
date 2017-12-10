@@ -10,7 +10,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 	$res = $ss->fetch(PDO::FETCH_BOTH);
 	if($pass == $res['password']){
 		setcookie('username', $user, time()+(86400*10), "/");
-		setcookie('user-type', $res['type'], time()+(86400*10), "/");
+		//setcookie('user-type', $res['type'], time()+(86400*10), "/");
 		location(currentPath());
 	}else{
 		location(currentPath().'?login=Login GAGAL#masuk');
