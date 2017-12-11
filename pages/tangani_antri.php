@@ -32,7 +32,7 @@ if(isset($_GET['warning']) && isset($_GET['message'])){
 				<span>Antrian Aktif</span>
 			</div>
 			<div class='panel-body' style='overflow: auto;'>
-				<table class='table table-striped table-bordered table-hover table-resposive' id='table-antrian'>
+				<table class='table table-striped table-bordered table-hover table-resposive' id='antrian'>
 					<thead>
 						<tr>
 						<th>Username</th>
@@ -64,8 +64,7 @@ if(isset($_GET['warning']) && isset($_GET['message'])){
 								<a href='../process/tangani.php?id=".$res['Nomor Antrian']."&peg_id=".$resUser->no_pegawai."&status=tangani' class='btn btn-primary btn-sm'>
 									<i class='fa fa-check fa-fw'></i>
 								</a>
-								<a href='../process/tangani.php?id=".$res['Nomor Antrian']."&status=belum_datang' class='btn btn-danger btn-sm'>
-									Belum Datang ?
+								<a href='../process/tangani.php?id=".$res['Nomor Antrian']."&status=belum_datang' class='btn btn-warning btn-sm'><i class='fa fa-exclamation fa-fw'></i>
 								</a>
 							</td>
 						</tr>";

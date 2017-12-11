@@ -6,7 +6,7 @@
 				<h5>Data Riwayat Pasien</h5>
 			</div>
 			<div class='panel-body' style="overflow: auto;">
-				<table id='table-riwayat' class='table table-striped table-bordered table-hover table-responsive' style='width:100%'>
+				<table id='table-antrian' class='table table-striped table-bordered table-hover table-responsive' style='width:100%'>
 					<thead>
 						<tr>
 							<th colspan='6' class='text-center success'>Identitas Pasien</th>

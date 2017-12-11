@@ -20,7 +20,7 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#table-riwayat').dataTable({
+            $('#table-antrian').dataTable({
                 language : {
                     lengthMenu : "Tampilkan _MENU_ per halaman",
                     search : "Cari : ",
@@ -35,6 +35,7 @@
                             next: "<i class='fa fa-forward fa-fw'></i>"
                         }
                 },
+                sort : false,
                 responsive : true
             });
         });

@@ -11,8 +11,7 @@ if(!isset($_page_key)){
   }
 </style>
 <header class='masthead' id='booking'>
-  <div class='container'>
-    <div class='row'>
+  <div class='container' id='isi'>
 <?php 
 if(isHaveBook()){
   $db = getConnection();
@@ -20,7 +19,7 @@ if(isHaveBook()){
   $ss->execute(array($_COOKIE['username']));
   $res = $ss->fetch(PDO::FETCH_ASSOC);
 
-  $sisa = $db->query("SELECT * FROM antrian_aktif WHERE `Tanggal Masuk` < '".$res['Tanggal Masuk']."' AND `Nomor Antrian` LIKE '".date('Ymd')."%' AND Status = 'ngantre'");
+  $sisa = $db->query("SELECT * FROM antrian_aktif WHERE `Tanggal Masuk` < '".$res['Tanggal Masuk']."' AND Status = 'ngantre'");
   if($res['Status']=='tidak datang'){
     $info = "
           <h3 class='text-center'>Nomor antrian anda sudah lewat</h3>
@@ -41,6 +40,7 @@ if(isHaveBook()){
   }
 
   echo "
+    <div class='row'>
         <div class='col-lg-12'>
           <h3 class='text-center'>INFO ANTRIAN</h3>
           <hr class='star-light'>
@@ -60,7 +60,7 @@ if(isHaveBook()){
               Nomor Antrian Anda
             </div>
             <div class='col-lg-6'>
-              <span style='font-size: 18px; font-weight: 700'>".substr(strval($res['Nomor Antrian']),8)."</span>
+              <span style='font-size: 18px; font-weight: 700' id='no_antrian'>".substr(strval($res['Nomor Antrian']),8)."</span>
             </div>
           </div>
           <div class='row text-left' style='border-bottom: solid 1px #fff;'>
@@ -68,7 +68,7 @@ if(isHaveBook()){
               Nama Anda
             </div>
             <div class='col-lg-6'>
-              <span style='font-size: 18px; font-weight: 700'>
+              <span style='font-size: 18px; font-weight: 700' id='nama_lengkap'>
               ".$res['Nama Lengkap']."</span>
             </div>
           </div>
@@ -77,7 +77,7 @@ if(isHaveBook()){
               Keluhan Anda
             </div>
             <div class='col-lg-6'>
-              <span style='font-size: 18px; font-weight: 700'>
+              <span style='font-size: 18px; font-weight: 700' id='keluhan'>
               ".$res['Keluhan']."
               </span>
             </div>
@@ -86,17 +86,47 @@ if(isHaveBook()){
         </div>
       </div>
       <div class='col-md-6'>
-        <div class='container'>
+        <div class='container' id='info'>
           ".$info."
         </div>
-      </div>";
+      </div>
+    </div>";
+      ?>
+
+<script type="text/javascript">
+  function getData(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200){
+        var myObj = JSON.parse(this.responseText);
+        if (myObj != null) {
+          document.getElementById("no_antrian").innerHTML = myObj.nomor_antrian;
+          document.getElementById("nama_lengkap").innerHTML = myObj.nama_lengkap;
+          document.getElementById("keluhan").innerHTML = myObj.keluhan;
+          document.getElementById("info").innerHTML = myObj.info;
+        }else{
+          window.location = '../users/?page=booking';
+        }
+      }
+    };
+    xmlhttp.open("GET", "../process/json-provider.php?req=my_antrian&username="+<?php echo "'".$_COOKIE['username']."'"; ?>, true);
+    xmlhttp.send();
+  }
+  setInterval(function(){
+    getData();
+  }, 1000);
+</script>
+
+      <?php
 }else{
   echo "
+    <div class='row' id='isi'>
       <div class='col-lg-6 mx-auto'>
         <div class='container'>
           <h2 class='text-center'>AMBIL ANTRIAN</h2>
           <hr class='star-light'/>
           <form action='../process/booking.php' method='post'>
+            <div style='display:block' id='info'></div>
             <div class='text-left container control-group'>
               <div class='form-group controls'>
                 <label>Keluhan</label>
@@ -133,10 +163,12 @@ if(isHaveBook()){
             <li>Nomor antrian anda akan dipanggil kembali setelah beberapa antrian yang sudah mendahului sesuai kebijakan bagian Administrasi</li>
           </ol>
         </div>
-      </div>";
+      </div>
+    </div>";
 }
 
 ?>
-    </div>
+
   </div>
+
 </header>
