@@ -25,6 +25,8 @@ if(isHaveBook()){
           <h3 class='text-center'>Nomor antrian anda sudah lewat</h3>
           <h6 class='text-center'>Silahkan segera datang ke puskesmas dan melapor</h6>
           <span class='text-center'>Nomor antrian anda akan kembali dipanggil setelah lima antrian di depan anda keluar</span>";
+  }else if($res['Status']=='ditolak'){
+    $info = "<h5 class='text-center'>Mohon maaf, sebelumnya anda mengajukan keluhan yang tidakbisa kami tangani!</h5><div style='display:block;'><a href='#' onclick='delReject(".$res['no_antrian'].")' class='btn btn-default btn-outline btn-sm'>OK</a></div>";
   }else{
     if($sisa->rowCount()==0){
       $info = "
@@ -115,6 +117,22 @@ if(isHaveBook()){
   setInterval(function(){
     getData();
   }, 1000);
+
+  function delReject(a){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200){
+        var myObj = JSON.parse(this.responseText);
+        if(myObj){
+          window.location = '../users/?page=booking';
+        }else{
+          alert('Ada kesalahan!');
+        }
+      }
+    };
+    xmlhttp.open("GET", "../process/json-provider.php?req=del_reject&id_antrian="+a, true);
+    xmlhttp.send();
+  }
 </script>
 
       <?php

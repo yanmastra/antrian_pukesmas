@@ -44,6 +44,11 @@ if(isLoged()){
         <h2 class='text-center'>PETUNJUK </h2>
         <hr class='star-light'>
         <div class='row'>
+          <div class='col-sm-4 mx-auto'>
+            <div class='alert alert-success alert-dismissable alert-sm'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><span><em>Klik gambar untuk melihat petunjuk</em></span></div>
+          </div>
+        </div>
+        <div class='row'>
 
           <div class='col-sm-4 portfolio-item'>
             <a class='portfolio-link' href='#petunjuk1' data-toggle='modal'>
