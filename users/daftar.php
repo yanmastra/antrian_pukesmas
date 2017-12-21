@@ -8,7 +8,7 @@
             <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
             <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
             <?php if(isset($_GET['daftar'])){echo $_GET['daftar'];} ?>
-            <form method="post" action="../process/daftar.php">
+            <form method="post" action="../process/daftar.php" id="daftarForm">
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls">
                   <label>Name Lengkap</label>
@@ -24,9 +24,9 @@
                 </div>
               </div>
               <div class="control-group">
-                <div class="form-group floating-label-form-group controls">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Email</label>
-                  <input class="form-control" id="email" type="email" name="email" placeholder="Email" required data-validation-required-message="Harap masukan email anda.">
+                  <input class="form-control" id="email" type="email" name="email" placeholder="Email" data-validation-required-message="Harap masukan email anda.">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
@@ -54,14 +54,14 @@
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls">
                   <label>Alamat</label>
-                  <input class="form-control" id="alamat" name="alamat" placeholder="Alamat" required data-validation-required-message="Harap masukan alamat tinggal anda.">
+                  <input class="form-control" id="alamat" name="alamat" placeholder="Alamat" data-validation-required-message="Harap masukan alamat tinggal anda.">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls">
                   <label>Nomor Telepon</label>
-                  <input class="form-control" id="phone" name="no_telp" type="number" min="80" max="0899999999999" placeholder="Nomor Telepon" required data-validation-required-message="Please enter your phone number.">
+                  <input class="form-control" id="phone" name="no_telp" type="number" min="80" max="0899999999999" placeholder="Nomor Telepon" data-validation-required-message="Please enter your phone number.">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>

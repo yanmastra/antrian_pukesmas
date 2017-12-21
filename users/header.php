@@ -17,6 +17,7 @@
 
     <!-- Custom styles for this template -->
     <link href="../dist/css/freelancer.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../vendor/magnific-popup/magnific-popup.css">
     
     <!--link href="../vendor/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet"-->
 
@@ -33,11 +34,3 @@
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Contact Form JavaScript -->
-    <script src="../js/jqBootstrapValidation.js"></script>
-    <script src="../js/contact_me.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="../js/freelancer.min.js"></script>
-<script src='../vendor/jquery/jquery.datetimepicker.full.min.js'></script>
-
-

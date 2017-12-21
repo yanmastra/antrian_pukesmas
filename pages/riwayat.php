@@ -10,7 +10,7 @@
 					<thead>
 						<tr>
 							<th colspan='6' class='text-center success'>Identitas Pasien</th>
-							<th colspan='2' class='text-center warning'>Yang Menangani</th>
+							<th colspan='2' class='text-center warning'>Pegawai</th>
 						</tr>
 						<tr class='btn-primary'>
 							<th>Username</th>
@@ -19,7 +19,6 @@
 							<th>Keluhan</th>
 							<th>Tanggal Keluar</th>
 							<th>Alamat</th>
-							<th>Nama Pegawai</th>
 							<th>Username </th>
 						</tr>
 					</thead>
@@ -37,7 +36,6 @@
 							<td class='success'>".$res['Keluhan']."</td>
 							<td class='success'>".$res['Tanggal Keluar']."</td>
 							<td class='success'>".$res['Alamat']."</td>
-							<td class='warning'>".$res['Nama Pegawai']."</td>
 							<td class='warning'>".$res['Username Pegawai']."</td>
 						</tr>";
 							$i++;
