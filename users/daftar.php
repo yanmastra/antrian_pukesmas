@@ -8,7 +8,7 @@
             <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
             <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
             <?php if(isset($_GET['daftar'])){echo $_GET['daftar'];} ?>
-            <form method="post" action="../process/daftar.php" id="daftarForm">
+            <form method="post" action="../process/daftar.php">
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls">
                   <label>Name Lengkap</label>
